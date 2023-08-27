@@ -13,6 +13,7 @@ let URLS = {
     app: [
         './',
         './*/*/*.*',
+        './*.*'
     ],
     vendor: [
         `${vendor.bootstrap}/dist/css/bootstrap.min.css`,
