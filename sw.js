@@ -12,8 +12,9 @@ let vendor = {
 let URLS = {
     app: [
         './',
+        './index.html',
+        './manifest.json',
         './*/*/*.*',
-        './*.*'
     ],
     vendor: [
         `${vendor.bootstrap}/dist/css/bootstrap.min.css`,
