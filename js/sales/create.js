@@ -44,7 +44,7 @@ const createNew = () => {
     });
     updateIntValue(ID_PRODUCT_COUNT, (id + 1))
 
-    transaction.oncomplete = () => { location.href = '../../views/products/index.html' }
+    transaction.oncomplete = () => { location.href = '../../views/sales/index.html' }
     transaction.onerror = e => console.log(e.target.error)
 }
 

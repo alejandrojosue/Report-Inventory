@@ -40,7 +40,7 @@ const saveEdit = () => {
         updated_at: `${fechaActual.toLocaleDateString()} | ${fechaActual.toLocaleTimeString()}`
     });
     transaction.onsuccess = e => console.log('siiii')
-    transaction.oncomplete = () => { location.href = `../../views/${TABLE}/index.html` }
+    transaction.oncomplete = () => { location.href = `../../views/expenses/index.html` }
     transaction.onerror = e => { console.log(e.target.error, 'noooo') }
 }
 
