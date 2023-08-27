@@ -1,0 +1,59 @@
+{
+    "name": "Pip Inventory and Report",
+    "short_name": "Pip",
+    "description": "Manejo de inventario y cierre de caja.",
+    "background_color": "rgb(47, 108, 240)",
+    "theme_color": "rgb(47, 108, 240)",
+    "orientation": "portrait",
+    "display": "standalone",
+    "start_url": "./",
+    "scope": "./",
+    "lang": "es-HN",
+    "icons": [
+        {
+            "src": "./icons/icono512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/icono384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/icono256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/icono192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/icono128x128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/icono96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/icono64x64.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/icono32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/icono16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        }
+    ]
+}
