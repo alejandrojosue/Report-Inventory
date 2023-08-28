@@ -4,6 +4,14 @@ const form = document.querySelector('#form');
 const TABLE = 'sales';
 
 let db;
+let saleArr =
+    [/*{
+        id: -1,
+        products: [],
+        status: true,
+        created_at: null,
+        updated_at: null
+    }*/];
 
 const iniciarDB = () => {
     const request = indexedDB.open('miDB')
@@ -63,6 +71,7 @@ const show = () => {
     cursor.onsuccess = (e) => {
         let cursor = e.target.result
         if (cursor) {
+            saleArr.push(cursor.value)
 
             list.innerHTML +=
                 `
@@ -75,12 +84,12 @@ const show = () => {
                 </span>
                 ${cursor.value.status ? '<span class="flex-fill text-truncate px-1">' :
                     `<span class="flex-fill text-truncate px-1 fst-italic text-danger text-decoration-line-through">`}
-                ${cursor.value.products.reduce((acc, obj) => acc + obj.amount, 0)}
+                ${cursor.value.products.reduce((acc, obj) => acc + obj.amount, 0)} Lps.
                 </span>
                 <span class="fw-bold d-flex justify-content-between text-secondary align-items-center"
                     style="width: 60px;">
                     <i class="fa-solid fa-pen" onclick="seleccionar(${cursor.value.id})"></i>
-                    ${cursor.value.status ? `<i class="fa-solid fa-trash" onclick="deleted()"></i>` : ''}
+                    ${cursor.value.status ? `<i class="fa-solid fa-trash" onclick="deleted(${cursor.value.id})"></i>` : ''}
                 </span >
             </div > `
             cursor.continue()
@@ -90,29 +99,27 @@ const show = () => {
 
 const seleccionar = (key) => location.href = './edit.html?key=' + key
 
-const saveEdit = (id, name, quantity, unitPrice, description, created_at) => {
+const saveEdit = (id) => {
     const transaction = db.transaction([TABLE], "readwrite")
     const objectStore = transaction.objectStore(TABLE)
     const fechaActual = new Date()
+    const v = saleArr.find(sale => sale.id === id)
     objectStore.put({
         id: parseInt(id),
-        name,
-        description,
-        unitPrice: parseFloat(unitPrice),
-        quantity: parseInt(quantity),
-        created_at,
+        products: v.products,
+        created_at: v.created_at,
         status: false,
         updated_at: `${fechaActual.toLocaleDateString()} | ${fechaActual.toLocaleTimeString()} `
     });
     transaction.onsuccess = e => console.log('siiii')
-    transaction.oncomplete = () => { location.href = '../../views/products/index.html' }
+    transaction.oncomplete = () => { location.href = '../../views/sales/index.html' }
     transaction.onerror = e => { console.log(e.target.error, 'noooo') }
 }
 
-const deleted = (id, name, quantity, unitPrice, description, created_at) => {
-    const res = confirm(`Seguro que desea eliminar: \n * ${name}* de la lista ? `)
+const deleted = (id) => {
+    const res = confirm(`Seguro que desea eliminar la venta #: \n * ${id}* de la lista ? `)
     if (res) {
-        saveEdit(id, name, quantity, unitPrice, description, created_at)
+        saveEdit(id)
         alert('Eliminado!')
         show()
     }

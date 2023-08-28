@@ -18,8 +18,7 @@ let product = {
 let sale =
 {
     id: 0,
-    products: [
-    ],
+    products: [],
     status: true,
     created_at: null,
     updated_at: null

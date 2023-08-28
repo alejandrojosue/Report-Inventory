@@ -1,15 +1,21 @@
 const TABLE = 'sales';
-let db, id, created_at;
+let db;
+let saleArr =
+    [/*{
+        id: -1,
+        products: [],
+        status: true,
+        created_at: null,
+        updated_at: null
+    }*/];
 const record = (key) => {
     const transaction = db.transaction([TABLE])
     const objectStore = transaction.objectStore(TABLE)
     const request = objectStore.get(parseInt(key))
-    const name = document.querySelector('#productName')
     const quantity = document.querySelector('#quantity')
     const unitPrice = document.querySelector('#unitPrice')
     const description = document.querySelector('#description')
     request.onsuccess = () => {
-        name.value = request.result.name
         quantity.value = request.result.quantity
         unitPrice.value = request.result.unitPrice
         description.value = request.result.description
@@ -29,23 +35,17 @@ const record = (key) => {
     }
 })();
 
-const saveEdit = () => {
-    const name = document.querySelector('#productName').value
-    const quantity = document.querySelector('#quantity').value
-    const unitPrice = document.querySelector('#unitPrice').value
-    const description = document.querySelector('#description').value
+const saveEdit = (id) => {
     const transaction = db.transaction([TABLE], "readwrite")
     const objectStore = transaction.objectStore(TABLE)
     const fechaActual = new Date()
+    const v = saleArr.find(sale => sale.id === id)
     objectStore.put({
         id: parseInt(id),
-        name,
-        quantity: parseInt(quantity),
-        unitPrice: parseFloat(unitPrice),
-        description,
-        status: true,
-        created_at,
-        updated_at: `${fechaActual.toLocaleDateString()} | ${fechaActual.toLocaleTimeString()}`
+        products: v.products,
+        created_at: v.created_at,
+        status: false,
+        updated_at: `${fechaActual.toLocaleDateString()} | ${fechaActual.toLocaleTimeString()} `
     });
     transaction.onsuccess = e => console.log('siiii')
     transaction.oncomplete = () => { location.href = '../../views/sales/index.html' }
