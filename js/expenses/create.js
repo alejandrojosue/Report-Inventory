@@ -28,7 +28,6 @@ const updateIntValue = (key, newValue) => {
 }
 
 const createNew = () => {
-
     setIntValue(ID_PRODUCT_COUNT, 0); // Guardar un valor entero PRIMERA VEZ
     let id = parseInt(localStorage.getItem(ID_PRODUCT_COUNT));
     const transaction = db.transaction([TABLE], "readwrite")
@@ -44,9 +43,10 @@ const createNew = () => {
     updateIntValue(ID_PRODUCT_COUNT, (id + 1))
 
     transaction.oncomplete = () => {
+        alert('creado!')
         location.href = '../../views/expenses/index.html'
     }
-    transaction.onerror = e => console.log(e.target.error)
+    transaction.onerror = e => alert(e.target.error)
 }
 
 (() => {
