@@ -42,18 +42,14 @@ const createNew = () => {
     updateIntValue(ID_PRODUCT_COUNT, (id + 1))
 
     transaction.oncomplete = () => {
-        location.href = `../../views/expenses/index.html`
+        location.href = '../../views/expenses/index.html'
     }
     transaction.onerror = e => console.log(e.target.error)
 }
 
 (() => {
     'use strict'
-
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
             if (!form.checkValidity()) {
