@@ -31,7 +31,6 @@ const createNew = () => {
     const objectStore = transaction.objectStore(TABLE)
     setIntValue(ID_PRODUCT_COUNT, 0); // Guardar un valor entero PRIMERA VEZ
     let id = parseInt(localStorage.getItem(ID_PRODUCT_COUNT));
-
     objectStore.add({
         id,
         amount: parseFloat(amount),
@@ -42,7 +41,9 @@ const createNew = () => {
     });
     updateIntValue(ID_PRODUCT_COUNT, (id + 1))
 
-    transaction.oncomplete = () => { location.href = `../../views/expenses/index.html` }
+    transaction.oncomplete = () => {
+        location.href = `../../views/expenses/index.html`
+    }
     transaction.onerror = e => console.log(e.target.error)
 }
 

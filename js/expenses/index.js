@@ -38,7 +38,7 @@ const iniciarDB = () => {
     }
 }
 
-const show = (date = null) => {
+const show = (date = '') => {
     list.innerHTML =
         `
     <div class="border-bottom d-flex p-2 fs-5 text-secondary align-items-center">
@@ -59,10 +59,10 @@ const show = (date = null) => {
     cursor.onsuccess = (e) => {
         let cursor = e.target.result
         if (cursor) {
-            if (!date) {
+            if (date) {
                 const dateString = cursor.value.created_at;
-                const [datePart, timePart] = dateString.split(" | ");
-                if (date !== datePart.trim()) {
+                const [datePart, timePart] = dateString.split("|");
+                if (date === datePart.trim()) {
                     list.innerHTML +=
                         `
                 ${!cursor.value.status ?
