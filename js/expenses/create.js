@@ -1,5 +1,7 @@
 const TABLE = 'expenses';
 const ID_PRODUCT_COUNT = 'expenseID';
+const currentDate = new Date();
+document.querySelector('#date').textContent = currentDate.toLocaleDateString();
 (() => {
     const request = indexedDB.open('miDB')
     request.onerror = (evt) => alert(`Error ${evt.code} / ${evt.message}`)
@@ -29,14 +31,14 @@ const createNew = () => {
     const objectStore = transaction.objectStore(TABLE)
     setIntValue(ID_PRODUCT_COUNT, 0); // Guardar un valor entero PRIMERA VEZ
     let id = parseInt(localStorage.getItem(ID_PRODUCT_COUNT));
-    const fechaActual = new Date();
+
     objectStore.add({
         id,
         amount: parseFloat(amount),
         description,
         status: true,
-        created_at: `${fechaActual.toLocaleDateString()} | ${fechaActual.toLocaleTimeString()}`,
-        updated_at: `${fechaActual.toLocaleDateString()} | ${fechaActual.toLocaleTimeString()}`
+        created_at: `${currentDate.toLocaleDateString()} | ${currentDate.toLocaleTimeString()}`,
+        updated_at: `${currentDate.toLocaleDateString()} | ${currentDate.toLocaleTimeString()}`
     });
     updateIntValue(ID_PRODUCT_COUNT, (id + 1))
 

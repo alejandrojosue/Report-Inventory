@@ -1,5 +1,7 @@
 const TABLE = 'expenses';
 let db, id, created_at;
+const fechaActual = new Date();
+document.querySelector('#date').textContent = fechaActual.toLocaleDateString();
 const record = (key) => {
     const transaction = db.transaction([TABLE])
     const objectStore = transaction.objectStore(TABLE)

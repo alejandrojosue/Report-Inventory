@@ -1,14 +1,11 @@
-const list = document.getElementById('list')
-const SSeek = document.querySelector('#SSeek')
-const form = document.querySelector('#form')
+const list = document.getElementById('list');
+const form = document.querySelector('#form');
 
 const TABLE = 'sales';
 
 let db;
 
 const iniciarDB = () => {
-    // form.addEventListener('submit', seek)
-
     const request = indexedDB.open('miDB')
 
     request.onerror = (evt) => {
@@ -52,7 +49,7 @@ const show = () => {
         <span class="fw-bold d-flex align-items-center">ID&nbsp;
             <i class="fa-solid fa-sort-down" style="font-size: .5em;"></i>&nbsp;&nbsp;
         </span>
-        <span class="fw-bold w-100 d-flex align-items-center">&nbsp;DESCRIPCIÓN&nbsp;
+        <span class="fw-bold w-100 d-flex align-items-center">&nbsp;Valor de Venta&nbsp;
             <i class="fa-solid fa-sort-down" style="font-size: .5em;"></i>
         </span>
         <span class="fw-bold d-flex justify-content-end" style="width: 100px;">
@@ -66,6 +63,7 @@ const show = () => {
     cursor.onsuccess = (e) => {
         let cursor = e.target.result
         if (cursor) {
+
             list.innerHTML +=
                 `
                 ${!cursor.value.status ?
@@ -77,12 +75,12 @@ const show = () => {
                 </span>
                 ${cursor.value.status ? '<span class="flex-fill text-truncate px-1">' :
                     `<span class="flex-fill text-truncate px-1 fst-italic text-danger text-decoration-line-through">`}
-                ${cursor.value.name}
+                ${cursor.value.products.reduce((acc, obj) => acc + obj.amount, 0)}
                 </span>
                 <span class="fw-bold d-flex justify-content-between text-secondary align-items-center"
                     style="width: 60px;">
                     <i class="fa-solid fa-pen" onclick="seleccionar(${cursor.value.id})"></i>
-                    ${cursor.value.status ? `<i class="fa-solid fa-trash" onclick="deleted(${cursor.value.id}, '${cursor.value.name}', ${cursor.value.quantity}, ${cursor.value.unitPrice}, '${cursor.value.description}', '${cursor.value.created_at}')"></i>` : ''}
+                    ${cursor.value.status ? `<i class="fa-solid fa-trash" onclick="deleted()"></i>` : ''}
                 </span >
             </div > `
             cursor.continue()
@@ -91,33 +89,6 @@ const show = () => {
 }
 
 const seleccionar = (key) => location.href = './edit.html?key=' + key
-
-const seek = (e) => {
-    e.preventDefault()
-    list.innerHTML = ''
-    const name = SSeek.value
-    const transaction = db.transaction([TABLE])
-    const objectStore = transaction.objectStore(TABLE)
-
-    const indice = objectStore.index('seekName')
-    const range = IDBKeyRange.only(name)
-    const cursor = indice.openCursor(range)
-
-    cursor.onsuccess = (e) => {
-        let cursor = e.target.result
-        if (cursor) {
-            list.innerHTML +=
-                `< p > ${cursor.value.name}
-<button class="btn btn-success" onclick="seleccionar(${cursor.value.id})">
-    <span class="fs-3">
-        <i class="fa-solid fa-pencil"></i>Editar
-    </span>
-</button>
-            </p > `
-            cursor.continue()
-        }
-    }
-}
 
 const saveEdit = (id, name, quantity, unitPrice, description, created_at) => {
     const transaction = db.transaction([TABLE], "readwrite")

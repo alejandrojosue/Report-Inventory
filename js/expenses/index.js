@@ -39,7 +39,6 @@ const iniciarDB = () => {
 }
 
 const show = (date = null) => {
-    console.log(date)
     list.innerHTML =
         `
     <div class="border-bottom d-flex p-2 fs-5 text-secondary align-items-center">
