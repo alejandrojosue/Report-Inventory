@@ -64,9 +64,11 @@ btnAdd.addEventListener('click', () => {
         cursor.onsuccess = (e) => {
             let cursor = e.target.result
             if (cursor) {
-                productArr.push(cursor.value)
-                productID.innerHTML +=
-                    `<option value="${cursor.value.id}">${cursor.value.name}</option>`
+                if (cursor.value.status) {
+                    productArr.push(cursor.value)
+                    productID.innerHTML +=
+                        `<option value="${cursor.value.id}">${cursor.value.name}</option>`
+                }
                 cursor.continue()
             }
         }

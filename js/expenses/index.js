@@ -170,7 +170,7 @@ window.onload = (e) => {
 }
 
 document.getElementById('btnShow').addEventListener('click', () => {
-    if (document.getElementById('btnShow').textContent === '  Mostrar Todos') {
+    if (document.getElementById('btnShow').textContent.trim() === 'Mostrar Todos') {
         document.getElementById('btnShow').innerHTML = '<i class="fa-solid fa-align-center"></i> &nbsp;Hoy'
         show()
     } else {

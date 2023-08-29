@@ -31,7 +31,7 @@
     </header>
     <form class="h-100 container d-flex align-content-between flex-wrap needs-validation" novalidate>
         <main class="row g-3">
-            <div class="col-md-12">
+            <div class="col-md-12 isEditable">
                 <label for="productID" class="form-label fw-bold">
                     Producto a Vender<span class="text-danger">*</span>
                 </label>
@@ -46,7 +46,7 @@
                     Este campo es requerido!
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-6 isEditable">
                 <label for="quantity" class="form-label fw-bold">
                     Cantidad a Vender<span class="text-danger">*</span>
                 </label>
@@ -58,7 +58,7 @@
                     Este campo es requerido!
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-6 isEditable">
                 <label for="unitPrice" class="form-label fw-bold">
                     Precio del Producto<span class="text-danger">*</span>
                 </label>
@@ -70,27 +70,12 @@
                     Este campo es requerido!
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 isEditable">
                 <button class="btn mx-1 w-100 fs-4 text-center text-primary"
                     style="background-color: rgba(13, 110, 253,.2);" id="btnAdd"><b>+ Agregar</b></button>
             </div>
             <strong>Detalle de la Venta</strong>
-            <div class="col-12 overflow-auto" style="max-height: 300px;" id="details">
-                <!-- <div class="alert alert-primary alert-dismissible fade d-flex align-items-center show" role="alert"
-                    style="height: 75px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="me-3" viewBox="0 0 16 16" aria-label="Info:"
-                        style="width: 20px; fill: #0d6efd;">
-                        <path
-                            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
-                    </svg>
-                    <div>
-                        <div class="text-dark fw-bold text-truncate" style="width: 250px;">
-                            Producto 1</div> <span class="text-dark">Cantidad: 10 &nbsp;Valor: 100.00</span>
-                    </div>
-                    <button type="button" class="btn-close h-50" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div> -->
-
-            </div>
+            <div class="col-12 overflow-auto" style="max-height: 300px;" id="details"></div>
         </main>
         <div class="col-lg-4 col-md-6 col-12 pb-3">
             <div class="py-2">
@@ -99,13 +84,13 @@
                         0.00</span>
                 </h2>
             </div>
-            <button class="fw-bold fs- btn btn-primary w-100" type="submit" id="btnCreate">
+            <button class="fw-bold fs- btn btn-primary w-100" type="submit" id="btnSave">
                 <i class="fa-solid fa-check"></i>
-                Finalizar y Guardar
+                Regresar
             </button>
         </div>
     </form>
-    <script src="../../js/sales/create.js"></script>
+    <script src="../../js/sales/edit.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>

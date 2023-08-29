@@ -47,7 +47,7 @@ const createNew = () => {
     transaction.oncomplete = () => {
         location.href = '../../views/products/index.html'
     }
-    transaction.onerror = e => console.log(e.target.error)
+    transaction.onerror = e => alert(e.target.error)
 }
 
 (() => {

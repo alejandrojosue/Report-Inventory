@@ -43,7 +43,6 @@ const createNew = () => {
     updateIntValue(ID_PRODUCT_COUNT, (id + 1))
 
     transaction.oncomplete = () => {
-        alert('creado!')
         location.href = '../../views/expenses/index.html'
     }
     transaction.onerror = e => alert(e.target.error)
