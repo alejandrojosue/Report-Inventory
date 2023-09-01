@@ -15,7 +15,7 @@ const deleted = async (id) => {
 }
 const redirection = (id) => {
     localStorage.setItem('productId', parseInt(id));
-    location.href = './edit.html'
+    location.href ='../../views/products/edit.html'
 };
 
 (async () => {
