@@ -58,7 +58,7 @@ let sale = { id: 0, products: [], status: true, created_at: null, updated_at: nu
             try {
                 const mensaje = await salesController.add(sale)
                 alert(mensaje)
-                location.href = './index.html'
+                location.href = '../../views/sales/index.html'
             } catch (err) {
                 console.error(err);
             }
