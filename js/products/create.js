@@ -12,7 +12,7 @@ const create = async () => {
                 name, stock, unitPrice, description
             })
             alert(mensaje)
-            location.href = './index.html'
+            location.href = '../../views/products/index.html'
         } catch (err) {
             console.error(err);
         }
