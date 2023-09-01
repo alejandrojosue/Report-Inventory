@@ -6,12 +6,14 @@ const expensesController = new ExpensesController();
     const forms = document.querySelectorAll('.needs-validation')
     Array.from(forms).forEach((form) => {
         form.addEventListener('submit', async(event) => {
+            alert('validando el form')
             if (!form.checkValidity()) {
                 event.preventDefault()
                 event.stopPropagation()
             }
             form.classList.add('was-validated')
             if (form.checkValidity()) {
+                alert('datos')
                 const amount = document.getElementById("amount").value
     const description = document.getElementById("description").value
 alert('antes del if')
@@ -24,7 +26,7 @@ alert('antes del if')
         } catch (err) {
             alert(err);
         }
-    }
+    }else{alert('else')}
             }
         }, false)
     })
