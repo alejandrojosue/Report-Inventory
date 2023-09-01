@@ -16,7 +16,7 @@ const deleted = async (id) => {
 }
 const redirection = (id) => {
     localStorage.setItem('expenseId', parseInt(id));
-    location.href = './edit.html'
+    location.href = '../../views/expenses/edit.html'
 };
 
 const show = async (date) => {
