@@ -16,7 +16,7 @@ const create = async () => {
             if (form.checkValidity()) {
                 const amount = document.getElementById("amount").value
     const description = document.getElementById("description").value
-
+alert('antes del if')
     if (amount && description) {
         try {
             const expense = { amount: parseFloat(amount), description }
@@ -24,7 +24,7 @@ const create = async () => {
             alert(mensaje)
             location.href = '../../views/expenses/index.html'
         } catch (err) {
-            console.error(err);
+            alert(err);
         }
     }
             }
