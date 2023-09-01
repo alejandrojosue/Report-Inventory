@@ -1,9 +1,7 @@
 import ExpensesController from '../../controllers/expensesController.js'
-const expensesController = new ExpensesController()
-const create = async () => {
-    
-}
-(() => {
+const expensesController = new ExpensesController();
+
+(async() => {
     'use strict'
     const forms = document.querySelectorAll('.needs-validation')
     Array.from(forms).forEach((form) => {
