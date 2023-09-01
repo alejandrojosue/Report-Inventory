@@ -1,8 +1,11 @@
 import ProductsController from '../../controllers/productsController.js'
 const productsController = new ProductsController();
-const create = async () => {
-    
-}
+const forms = document.querySelectorAll('.needs-validation')
+const name = document.getElementById("productName")
+const stock = document.getElementById("stock")
+const unitPrice = document.getElementById("unitPrice")
+const description = document.getElementById("description");
+
 (() => {
     'use strict'
     const forms = document.querySelectorAll('.needs-validation')
@@ -14,20 +17,21 @@ const create = async () => {
             }
             form.classList.add('was-validated')
             if (form.checkValidity()) {
-                const name = document.getElementById("productName").value
-    const stock = parseInt(document.getElementById("stock").value)
-    const unitPrice = parseFloat(document.getElementById("unitPrice").value)
-    const description = document.getElementById("description").value
-
+                
+                
     if (name && unitPrice && stock && description) {
         try {
-            const mensaje = await productsController.add({
-                name, stock, unitPrice, description
-            })
+            const product ={
+                    name: name.value,
+                    stock: parseInt(stock.value),
+                    unitPrice: parseFloat(unitPrice.value),
+                    description: description.value
+                }
+            const mensaje = await productsController.add(product)
             alert(mensaje)
             location.href = '../../views/products/index.html'
         } catch (err) {
-            console.error(err);
+            alert(err);
         }
     }
             }
