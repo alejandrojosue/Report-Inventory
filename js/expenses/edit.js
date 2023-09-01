@@ -29,7 +29,7 @@ const description = document.getElementById("description");
                             status: true
                         });
                         alert(msj)
-                        location.href = './index.html'
+                        location.href ='../../views/expenses/index.html'
                     } catch (err) {
                         console.error(err)
                     }
