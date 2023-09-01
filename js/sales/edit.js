@@ -15,7 +15,7 @@ const saveEdit = async () => {
         sale.status = true
         const msj = await salesController.update(parseInt(saleID), sale)
         alert(msj)
-        location.href = './index.html'
+        location.href = '../../views/sales/index.html'
     } catch (err) {
         console.error(err)
     }
