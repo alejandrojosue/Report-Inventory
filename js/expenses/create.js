@@ -9,7 +9,7 @@ const create = async () => {
             const expense = { amount: parseFloat(amount), description }
             const mensaje = await expensesController.add(expense)
             alert(mensaje)
-            location.href = './index.html'
+            location.href = '../../views/expenses/index.html'
         } catch (err) {
             console.error(err);
         }
