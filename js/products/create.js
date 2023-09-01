@@ -11,8 +11,9 @@ const description = document.getElementById("description");
     const forms = document.querySelectorAll('.needs-validation')
     Array.from(forms).forEach((form) => {
         form.addEventListener('submit', async(event) => {
+            event.preventDefault()
             if (!form.checkValidity()) {
-                event.preventDefault()
+                
                 event.stopPropagation()
             }
             form.classList.add('was-validated')
