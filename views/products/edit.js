@@ -15,7 +15,7 @@ const description = document.getElementById("description");
     stock.value = product.stock
     unitPrice.value = product.unitPrice
     description.value = product.description
-    !(product.status) ? document.querySelector('#btnSave').innerHTML = '<i class="fa-solid fa-check"></i> Restaurar' : 'Finalizar y Guardar'
+
 
     Array.from(forms).forEach((form) => {
         form.addEventListener('submit', async (event) => {
@@ -25,6 +25,8 @@ const description = document.getElementById("description");
             }
             form.classList.add('was-validated')
             if (form.checkValidity()) {
+
+
                 if (name && unitPrice && stock && description) {
                     try {
                         const msj = await productsController.update(parseInt(productID), {
@@ -35,7 +37,6 @@ const description = document.getElementById("description");
                             status: true
                         });
                         alert(msj)
-                        location.href = './index.html'
                     } catch (err) {
                         console.error(err)
                     }
