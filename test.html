@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -48,8 +48,70 @@
         </table>
 
     </div>
+    <script type="module">
+        import ProductsController from './controllers/ProductsController.js';
+        import SalesController from './controllers/SalesController.js';
 
-    <script>
+        class ReportGenerator {
+            constructor() {
+                this.productsController = new ProductsController();
+                this.salesController = new SalesController();
+            }
+
+            async generateReport() {
+                try {
+                    // Obtener todos los productos
+                    const products = await this.productsController.getAll();
+
+                    // Obtener todas las ventas realizadas hoy
+                    const currentDate = new Date().toLocaleDateString();
+                    const sales = await this.salesController.getAll();
+                    const salesToday = sales.filter(sale => sale.created_at.split('|')[0] == currentDate);
+
+                    // Inicializar un objeto para el informe
+                    const report = [];
+
+                    // Calcular la cantidad de cada producto vendido hoy
+                    for (const product of products) {
+                        const productSoldToday = salesToday.reduce((total, sale) => {
+                            const soldProduct = sale.products.find(p => p.id === product.id);
+                            return total + (soldProduct ? soldProduct.quantity : 0);
+                        }, 0);
+
+                        const productAmountSoldToday = salesToday.reduce((total, sale) => {
+                            const soldProduct = sale.products.find(p => p.id === product.id);
+                            return total + (soldProduct ? soldProduct.amount : 0);
+                        }, 0);
+
+                        const productAvailable = product.stock - productSoldToday;
+
+                        report.push({
+                            Producto: product.name,
+                            "Vendidos Hoy": productSoldToday,
+                            "Valor Total": productAmountSoldToday,
+                            "Disponibles": productAvailable
+                        });
+                    }
+
+                    console.table(report); // Esto imprime el informe en la consola en forma de tabla
+
+                    // También puedes devolver el informe como un objeto JSON
+                    // return report;
+
+                    return "Informe generado exitosamente.";
+                } catch (error) {
+                    return `Error al generar el informe: ${error}`;
+                }
+            }
+        }
+
+        // Ejemplo de uso
+        const reportGenerator = new ReportGenerator();
+        reportGenerator.generateReport().then(console.log).catch(console.error);
+
+
+    </script>
+    <!-- <script>
         const ventas = [
             {
                 nombreProducto: "Pollo Entero",
@@ -224,7 +286,7 @@
             window.onbeforeprint = (event) => console.log("before print")
             window.onafterprint = (event) => location.href = './index.html'
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
