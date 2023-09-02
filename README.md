@@ -8,9 +8,9 @@
 [Mi Web](https://alejandrojosue.github.io/Report-Inventory/)
 
 <div style="display: flex; flex-wrap: nowrap;">
-    <img src="./assets/img/template/[Content%20Manager]%20Menu.png" alt="Pantalla de Inicio" style="width: 250px; height: 400px;">
-    <img src="./assets/img/template/[Content%20Manager]%20View%20Expense.png" alt="Pantalla de Gastos" style="width: 250px; height: 400px;">
-    <img src="./assets/img/template/[Content%20Manager]%20View%20Product.png" alt="Pantalla de Productos" style="width: 250px; height: 400px;">
-    <img src="./assets/img/template/[Content%20Manager]%20View%20Sales.png" alt="Pantalla de Ventas" style="width: 250px; height: 400px;">    
+    <img src="./assets/img/template/[Content%20Manager]%20Menu.png" alt="Pantalla de Inicio" style="width: 250px; height: auto;">
+    <img src="./assets/img/template/[Content%20Manager]%20View%20Expense.png" alt="Pantalla de Gastos" style="width: 250px; height: auto;">
+    <img src="./assets/img/template/[Content%20Manager]%20View%20Product.png" alt="Pantalla de Productos" style="width: 250px; height: auto;">
+    <img src="./assets/img/template/[Content%20Manager]%20View%20Sales.png" alt="Pantalla de Ventas" style="width: 250px; height: auto;">    
 </div>
 
