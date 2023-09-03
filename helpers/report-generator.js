@@ -1,5 +1,5 @@
-import ProductsController from '../controllers/ProductsController.js';
-import SalesController from '../controllers/SalesController.js';
+import ProductsController from '../controllers/productsController.js';
+import SalesController from '../controllers/salesController.js';
 
 export default class ReportGenerator {
     constructor() {
