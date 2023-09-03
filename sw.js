@@ -16,6 +16,7 @@ let URLS = {
         './test.html',
         './manifest.json',
         './database/config.js',
+        './helpers/report-generator.js',
         './models/product.js',
         './models/sale.js',
         './models/expense.js',
