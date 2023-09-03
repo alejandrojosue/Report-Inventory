@@ -13,6 +13,7 @@ let URLS = {
     app: [
         './',
         './index.html',
+        './test.html',
         './manifest.json',
         './database/config.js',
         './models/product.js',
