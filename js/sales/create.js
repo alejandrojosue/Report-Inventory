@@ -20,8 +20,10 @@ let sale = { id: 0, products: [], status: true, created_at: null, updated_at: nu
 
     products = await productsController.getAll()
     products.forEach(product => {
-        productID.innerHTML +=
-            `<option value="${product.id}">${product.name}</option>`
+        const { status } = product
+        if (status)
+            productID.innerHTML +=
+                `<option value="${product.id}">${product.name}</option>`
     })
 
     productID.onchange = () => {
